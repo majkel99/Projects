@@ -1,0 +1,56 @@
+﻿<Window x:Class="MiniTC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiniTC" 
+        xmlns:views="clr-namespace:MiniTC.Views" 
+        xmlns:vm="clr-namespace:MiniTC.ViewModel" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:c="clr-namespace:MiniTC.Commands"
+        mc:Ignorable="d"
+        Title="MiniTC" Height="550" Width="700">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="viewModel"/>
+        <c:CopyClickCommand x:Key="copyclick"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource copyclick}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <views:PanelTC Grid.Column="0" 
+                         Text="{Binding Left.Path, Mode=TwoWay}" 
+                         DriveSource="{Binding Left.DriveList, Mode=TwoWay}" 
+                         CurrentDriveSource="{Binding Left.CurrentDrive, Mode=TwoWay}"
+                         ItemSource="{Binding Left.Items, Mode=TwoWay}"
+                         CurrentItemSource="{Binding Left.CurrentItem, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="DriveChanged">
+                    <i:InvokeCommandAction Command="{Binding LeftDriveChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="ItemChanged">
+                    <i:InvokeCommandAction Command="{Binding LeftItemChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </views:PanelTC>
+        <views:PanelTC Grid.Column="2"
+                         Text="{Binding Right.Path, Mode=TwoWay}" 
+                         DriveSource="{Binding Right.DriveList, Mode=TwoWay}" 
+                         CurrentDriveSource="{Binding Right.CurrentDrive, Mode=TwoWay}"
+                         ItemSource="{Binding Right.Items, Mode = TwoWay}"
+                         CurrentItemSource="{Binding Right.CurrentItem, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="DriveChanged">
+                    <i:InvokeCommandAction Command="{Binding RightDriveChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="ItemChanged">
+                    <i:InvokeCommandAction Command="{Binding RightItemChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </views:PanelTC>
+        <Button x:Name="button" Grid.Column="1" Content="Copy >>" Width="80" Height="30"  HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom"
+                Command="{Binding CopyClick}"/>
+    </Grid>
+</Window>
