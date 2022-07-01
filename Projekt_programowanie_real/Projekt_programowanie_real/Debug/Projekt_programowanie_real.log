@@ -1,0 +1,5 @@
+﻿  Projekt_programowanie_real.cpp
+C:\Users\Majkel\source\repos\Projekt_programowanie_real\Projekt_programowanie_real\Nagłówek.h(114,19): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+C:\Users\Majkel\source\repos\Projekt_programowanie_real\Projekt_programowanie_real\Nagłówek.h(125,19): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+C:\Users\Majkel\source\repos\Projekt_programowanie_real\Projekt_programowanie_real\Projekt_programowanie_real.cpp(17,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  Projekt_programowanie_real.vcxproj -> C:\Users\Majkel\source\repos\Projekt_programowanie_real\Debug\Projekt_programowanie_real.exe
